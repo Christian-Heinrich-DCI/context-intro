@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useCounter } from "./context/CounterContext";
+import CounterLight from "./components/CounterLight";
+import CounterDark from "./components/CounterDark";
+import "./App.css";
 
 function App() {
+  const { counter, countReset } = useCounter();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header>
+        <h2>Context Intro &mdash; App.js</h2>
+        <p>Counter: {counter}</p>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <button onClick={countReset}>Reset</button>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <CounterLight />
+      <CounterDark />
     </div>
   );
 }
